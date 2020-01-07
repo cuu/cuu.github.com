@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Cuu Hells</title>
+  <link rel="shortcut icon" href="fav.png" />
+<script type="text/javascript" charset="utf-8" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="raphael-min.js"></script>
+
+  <style type="text/css">
+  /*<![CDATA[*/
+	body
+{
+	font-family:verdana,arial,serif,sans-serif,monospace,ºÚÌå,simhei,simsun;
+	background:#000;
+	color:#626260;
+}
+a
+{
+	text-decoration:none;
+	color:#626260;
+}
+a:hover
+{
+	color:#ccc;
+}
+#footer
+{
+	/*position:absolute;*/
+	
+}
+#btc_icon_ascii
+{
+	display:block; 
+	white-space: pre; 
+	font: 10px/5px monospace;
+	text-align: center;
+}
+  /*]]>*/
+  </style>   
+
+<script type="text/javascript" >
+
+jQuery.noConflict();	
+jQuery(document).ready(function($) {
+		
+	//$("#footer").css( "top", $(document).height() + 300);
+	//$("#footer").css( "left","1px");
+/*
+var start = $("#etc").position().top ;
+var left_space = $("#etc_words").offset().left;
+var tl = 44;
+var xs = 31;
+var ys = 31;
+
+var paper = Raphael( left_space, start, xs, ys);
+
+*/
+var twitter = "M14.605,13.11c0.913-2.851,2.029-4.698,3.313-6.038c0.959-1,1.453-1.316,0.891-0.216c0.25-0.199,0.606-0.464,0.885-0.605c1.555-0.733,1.442-0.119,0.373,0.54c2.923-1.045,2.82,0.286-0.271,0.949c2.527,0.047,5.214,1.656,5.987,5.077c0.105,0.474-0.021,0.428,0.464,0.514c1.047,0.186,2.03,0.174,2.991-0.13c-0.104,0.708-1.039,1.167-2.497,1.471c-0.541,0.112-0.651,0.083-0.005,0.229c0.799,0.179,1.69,0.226,2.634,0.182c-0.734,0.846-1.905,1.278-3.354,1.296c-0.904,3.309-2.976,5.678-5.596,7.164c-6.152,3.492-15.108,2.984-19.599-3.359c2.947,2.312,7.312,2.821,10.555-0.401c-2.125,0-2.674-1.591-0.99-2.449c-1.595-0.017-2.608-0.521-3.203-1.434c-0.226-0.347-0.229-0.374,0.14-0.64c0.405-0.293,0.958-0.423,1.528-0.467c-1.651-0.473-2.66-1.335-3.009-2.491c-0.116-0.382-0.134-0.363,0.256-0.462c0.38-0.097,0.87-0.148,1.309-0.17C6.11,10.88,5.336,9.917,5.139,8.852c-0.186-1.006,0.005-0.748,0.758-0.46C9.263,9.68,12.619,11.062,14.605,13.11L14.605,13.11z";
+
+var email = "M28.516,7.167H3.482l12.517,7.108L28.516,7.167zM16.74,17.303C16.51,17.434,16.255,17.5,16,17.5s-0.51-0.066-0.741-0.197L2.5,10.06v14.773h27V10.06L16.74,17.303z";
+
+var iphone = "M20.755,1H10.62C9.484,1,8.562,1.921,8.562,3.058v24.385c0,1.136,0.921,2.058,2.058,2.058h10.135c1.136,0,2.058-0.922,2.058-2.058V3.058C22.812,1.921,21.891,1,20.755,1zM14.659,3.264h2.057c0.101,0,0.183,0.081,0.183,0.18c0,0.1-0.082,0.18-0.183,0.18h-2.057c-0.1,0-0.181-0.081-0.181-0.18C14.478,3.344,14.559,3.264,14.659,3.264zM13.225,3.058c0.199,0,0.359,0.162,0.359,0.36c0,0.198-0.161,0.36-0.359,0.36c-0.2,0-0.36-0.161-0.36-0.36S13.025,3.058,13.225,3.058zM15.688,28.473c-0.796,0-1.44-0.646-1.44-1.438c0-0.799,0.645-1.439,1.44-1.439s1.44,0.646,1.44,1.439S16.483,28.473,15.688,28.473zM22.041,24.355c0,0.17-0.139,0.309-0.309,0.309H9.642c-0.17,0-0.308-0.139-0.308-0.309V6.042c0-0.17,0.138-0.309,0.308-0.309h12.09c0.17,0,0.309,0.138,0.309,0.309V24.355z";
+
+paper.path( twitter  ).attr({  fill: "#626260", stroke: "none"});
+
+/*
+var email_paper = Raphael(30, start+tl, xs, ys);
+
+email_paper.path( email  ).attr({  fill: "#626260", stroke: "none"});
+
+var phone_paper = Raphael(30, start+tl*2, xs, ys);
+
+phone_paper.path( iphone  ).attr({  fill: "#626260", stroke: "none"});
+
+var r = Raphael ( 70, start, 300,300 );
+
+var labels = r.set();
+var tx = 0;
+var ty = 16;
+
+labels.push( 	r.text(tx, ty,     "@"),
+		r.text(tx, ty+=tl, "gnubsd @ me dot com"),
+		r.text(tx, ty+=tl, "plus 86 ")
+	  );
+labels.attr({font: "14px Arial", fill: "#626260", "text-anchor": "start"});
+*/
+
+});
+
+
+</script>
+
+</head>
+
+<body>
+	<div style=' width:auto;margin-left:auto;margin-right:auto;text-align:center;'>
+	<!-- center -->
+		<div style='margin-top:-240px;color:white;text-align:left;font-size:900px;font-weight:bold;'>Cuu Hells </div>
+		
+		<div style='text-align:center;font-size:270px;'>
+			<a href="blog" >Blog</a>
+		</div>
+	     <div style="text-align:center;font-size:270px;">
+	     		<a href="webirc.html" >IRC</a>
+	     </div>
+
+	     <div style="text-align:center;font-size:270px;">
+	     		<a target="_blank" href="http://twitter.com/" >@</a>
+	     </div>
+
+	     <div id="mail" style="text-align:center;font-size:270px;">
+	     		<a onclick="javascript:alert('gnubsd@me.com');"; href="#mail" >@</a>
+	     </div>
+
+		 
+	<div id="etc" style='text-align:center;font-size:40px;'><a onclick="javascript:alert('I am thinking...');"; href="#..." ><span id="etc_words">...</span></a> </div>
+	<br /> <br /> <br />
+	<!-- -->
+		<div id="footer"  style='font-size:40px;color:#626260;'>
+			<span style=''>&copy; 2010-?
+			<a href='#' ><span style='color:#737373;'>Cuu</span>.<span style='color:#B72E00;'>hells</span></a>
+			</span>
+		</div>
+	</div>
+</body>
+
+</html>

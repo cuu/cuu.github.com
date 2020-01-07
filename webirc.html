@@ -1,0 +1,50 @@
+<html>
+<head>
+<script type="text/javascript" charset="utf-8" src="jquery-1.7.1.min.js"></script>
+
+<style type="text/css">
+  /*<![CDATA[*/
+body
+{
+    font-family:Times,verdana,arial,serif,sans-serif,monospace,黑体,simhei,simsun;
+    background:#000;
+    color:#fff;
+}
+#ircframe
+{
+	border:none;
+}
+  /*]]>*/
+</style>   
+
+
+
+<title>Linuxfire</title>
+<script type="text/javascript" >
+
+jQuery.noConflict();    
+jQuery(document).ready(function($) {
+        
+    $("#ircframe").css( "width", $(window).width() - 10);
+    $("#ircframe").css( "height", $(window).height() - 30);
+
+$(window).resize(function() {
+	//if($(window).width() > 800 && $(window).height() > 720)
+	{
+		$("#ircframe").css( "width", $(window).width() - 10);
+		$("#ircframe").css( "height", $(window).height() - 30);
+	}
+});
+
+});
+</script>
+
+
+</head>
+<body>
+
+<iframe id="ircframe" width="800" height="720"src="http://widget.mibbit.com/?settings=f6c32770eeaf91fbaa3c296e065dd4f3&server=irc4.ourirc.com:6668&channel=%23linuxfire"></iframe>
+
+</body>
+</html>
+
