@@ -31,7 +31,7 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-fucking-new-golang-basis" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-new-golang-basis" class="article article-type-post" itemscope itemprop="blogPost">
   
   <div class="article-inner">
     
@@ -39,14 +39,14 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/11/11/fucking-new-golang-basis/">fucking new golang basis</a>
+      <a class="article-title" href="/2022/11/11/new-golang-basis/">new golang basis</a>
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/2022/11/11/fucking-new-golang-basis/" class="article-date">
+      <a href="/2022/11/11/new-golang-basis/" class="article-date">
   <time datetime="2022-11-11T14:04:50.000Z" itemprop="datePublished">2022-11-11</time>
 </a>
       
@@ -55,13 +55,10 @@
       
         <p>First</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GO111MODULE=on</span><br><span class="line">export GOPROXY=direct</span><br><span class="line">export GOSUMDB=off</span><br></pre></td></tr></table></figure>
-<p>Then</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go install github.com/cuu/yyyy@latest</span><br></pre></td></tr></table></figure>
 
 <p>otherwise the dumbass golang will try to visit <a target="_blank" rel="noopener" href="https://sum.golang.org/lookup/xxxxxx">https://sum.golang.org/lookup/xxxxxx</a></p>
-<p>Inside any folder</p>
-<p>first is not <code>go run main.go</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go mod init example.com/thebinaryname</span><br><span class="line">go mod tidy</span><br></pre></td></tr></table></figure>
+<p>Then directly go to work folder where gonna write go code</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">go mod init example.com/thebinaryname</span><br><span class="line">go get github.com/cuu/yyyy@latest</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>the developers must got these ideas from nodejs development….</p>
 <p>then create main.go ,the old days back</p>
