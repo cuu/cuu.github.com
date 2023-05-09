@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>DevTerm - Keyboard Tester</title>
+  <script type="text/javascript">
+	var isIE = false;
+	var ieVersion = 0;
+	if (navigator.userAgent.indexOf("MSIE") > -1 || navigator.userAgent.indexOf("Trident") > -1) {
+	  isIE = true;
+	  var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+	  reIE.exec(navigator.userAgent);
+	  ieVersion = parseFloat(RegExp.$1);
+	}
+
+	if (isIE && ieVersion < 8) {
+	  alert("你的浏览器版本过低,网站部分功能可能无法正常使用,请升级浏览器版本!"); 
+	}
+  </script>
+  <script type="text/javascript" src="gamepad.js"></script>
+   
+  <script  src="script.js"></script>
+
+<style>
+.axes {
+  padding: 1em;
+}
+
+.buttons {
+  margin-left: 1em;
+}
+
+/*meter*/.axis {
+  min-width: 200px;
+  margin: 1em;
+}
+
+.button {
+  display: inline-block;
+  text-align: center;
+  padding: 1em;
+  border-radius: 20px;
+  border: 1px solid black;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAAxJREFUCNdjYPjPAAACAgEAqiqeJwAAAABJRU5ErkJggg==);
+  background-size: 0% 0%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.pressed {
+  border: 1px solid red;
+}
+
+.touched::after {
+  content: "!";
+  display: block;
+  position: absolute;
+  margin-top: -0.2em;
+  margin-left: -0.5em;
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+</style>
+
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<h2 id="start">DevTerm键盘测试</h2>
+<!-- partial:index.partial.html -->
+<br />
+<br /> 
+<br />
+<div class="artboard">
+  
+    <div class="keyboard">
+      <div class="row">
+        <div class="keys">
+          <div class="kescape" id="kesc"><a>esc </a></div>
+          <div class="kf1"><a>f1</a></div>
+          <div class="kf2"><a>f2</a></div>
+          <div class="kf3"><a>f3</a></div>
+          <div class="kf4"><a>f4</a></div>
+          <div class="kf5"><a>f5</a></div>
+          <div class="kf6"><a>f6</a></div>
+          <div class="kf7"><a>f7</a></div>
+          <div class="kf8"><a>f8</a></div>
+          <div class="kf9"><a>f9</a></div>
+          <div class="kf10"><a>f10</a></div>
+          <div class="kf11"><a>f11</a></div>
+          <div class="kf12"><a>f12</a></div>
+          <div class="kf13"><a>f13</a></div>
+          <div class="k`"><a>`</a></div>
+          <div class="k1"><a>1</a></div>
+          <div class="k2"><a>2</a></div>
+          <div class="k3"><a>3</a></div>
+          <div class="k4"><a>4</a></div>
+          <div class="k5"><a>5</a></div>
+          <div class="k6"><a>6</a></div>
+          <div class="k7"><a>7</a></div>
+          <div class="k8"><a>8</a></div>
+          <div class="k9"><a>9</a></div>
+          <div class="k0"><a>0</a></div>
+          <div class="k-"><a>-</a></div>
+          <div class="k="><a>=</a></div>
+          <div class="kbackspace"><a> del</a></div>
+          <div class="ktab"><a>tab</a></div>
+          <div class="kq"><a>q</a></div>
+          <div class="kw"><a>w</a></div>
+          <div class="ke"><a>e</a></div>
+          <div class="kr"><a>r</a></div>
+          <div class="kt"><a>t</a></div>
+          <div class="ky"><a>y</a></div>
+          <div class="ku"><a>u</a></div>
+          <div class="ki"><a>i</a></div>
+          <div class="ko"><a>o</a></div>
+          <div class="kp"><a>p</a></div>
+          <div class="k["><a>[</a></div>
+          <div class="k]"><a>]</a></div>
+          <div class="kbackslash"><a>\ </a></div>
+          <div class="kcapslock"><a>capslock</a></div>
+          <div class="ka"><a>a</a></div>
+          <div class="ks"><a>s</a></div>
+          <div class="kd"><a>d</a></div>
+          <div class="kf"><a>f</a></div>
+          <div class="kg"><a>g</a></div>
+          <div class="kh"><a>h</a></div>
+          <div class="kj"><a>j</a></div>
+          <div class="kk"><a>k</a></div>
+          <div class="kl"><a>l</a></div>
+          <div class="k;"><a>;</a></div>
+          <div class="k'"><a>'</a></div>
+          <div class="kenter"><a> return   </a></div>
+          <div class="kshiftleft"><a> shift</a></div>
+          <div class="kz"><a>z</a></div>
+          <div class="kx"><a>x</a></div>
+          <div class="kc"><a>c</a></div>
+          <div class="kv"><a>v</a></div>
+          <div class="kb"><a>b</a></div>
+          <div class="kn"><a>n</a></div>
+          <div class="km"><a>m</a></div>
+          <div class="k,"><a>,</a></div>
+          <div class="k."><a>.</a></div>
+          <div class="k/"><a>/</a></div>
+          <div class="kshiftright"><a> shift</a></div>
+          <div class="kcontrolleft"><a> control    </a></div>
+          <div class="kaltleft"><a> option   </a></div>
+          <div class="kmetaleft"><a> command</a></div>
+          <div class="kspace"><a>space</a></div>
+          <div class="kmetaright"><a> command</a></div>
+          <div class="kaltright"><a> option   </a></div>
+          <div class="karrowup"><a> up</a></div>
+          <div class="karrowdown"><a> down</a></div>
+          <div class="karrowleft"><a> left</a></div>
+          <div class="karrowright"><a> right</a></div>
+          <div class="kpageup"><a>page up</a></div>
+          <div class="kpagedown"><a>page down</a></div>
+        </div>
+      </div>
+    </div>
+    
+   <div id="axis">
+	<div id="axis_left"><a>&larr;</a><a>mouse left</a></div>
+	<div id="axis_right"><a>&rarr;</a><a>mouse right</a></div>
+	<div id="axis_up"><a>&uarr;</a><a>mouse up</a></div> 
+	<div id="axis_down"><a>&darr;</a><a>mouse down</a></div>
+   </div>
+
+   <div id="gamepad"></div>
+</div>
+
+</body>
+</html>
