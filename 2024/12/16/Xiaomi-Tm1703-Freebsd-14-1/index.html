@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Xiaomi Tm1703 Freebsd 14.1 | Cuu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&#x2F;etc&#x2F;rc.conf    12345678910111213141516171819202122232425262728hostname&#x3D;&quot;tm1703&quot;ifconfig_ue0&#x3D;&quot;DHCP&quot;ifconfig_ue0_ipv6&#x3D;&quot;inet6 accept_rtadv&quot;local_unbound_enable&#x3D;&quot;YES&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xiaomi Tm1703 Freebsd 14.1">
+<meta property="og:url" content="https://cuu.github.io/2024/12/16/Xiaomi-Tm1703-Freebsd-14-1/index.html">
+<meta property="og:site_name" content="Cuu">
+<meta property="og:description" content="&#x2F;etc&#x2F;rc.conf    12345678910111213141516171819202122232425262728hostname&#x3D;&quot;tm1703&quot;ifconfig_ue0&#x3D;&quot;DHCP&quot;ifconfig_ue0_ipv6&#x3D;&quot;inet6 accept_rtadv&quot;local_unbound_enable&#x3D;&quot;YES&amp;qu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-12-16T11:53:00.000Z">
+<meta property="article:modified_time" content="2024-12-16T11:57:30.704Z">
+<meta property="article:author" content="Cuu">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Cuu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-Xiaomi-Tm1703-Freebsd-14-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Xiaomi Tm1703 Freebsd 14.1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2024/12/16/Xiaomi-Tm1703-Freebsd-14-1/" class="article-date">
+  <time datetime="2024-12-16T11:53:00.000Z" itemprop="datePublished">2024-12-16</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>/etc/rc.conf</code>   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">hostname=&quot;tm1703&quot;</span><br><span class="line">ifconfig_ue0=&quot;DHCP&quot;</span><br><span class="line">ifconfig_ue0_ipv6=&quot;inet6 accept_rtadv&quot;</span><br><span class="line">local_unbound_enable=&quot;YES&quot;</span><br><span class="line">sshd_enable=&quot;YES&quot;</span><br><span class="line">moused_enable=&quot;YES&quot;</span><br><span class="line">ntpd_enable=&quot;YES&quot;</span><br><span class="line">ntpd_sync_on_start=&quot;YES&quot;</span><br><span class="line">powerd_enable=&quot;YES&quot;</span><br><span class="line"># Set dumpdev to &quot;AUTO&quot; to enable crash dumps, &quot;NO&quot; to disable</span><br><span class="line">dumpdev=&quot;AUTO&quot;</span><br><span class="line">zfs_enable=&quot;YES&quot;</span><br><span class="line">saver=&quot;blank&quot;</span><br><span class="line">blanktime=&quot;300&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;</span><br><span class="line">hald_enable=&quot;YES&quot;</span><br><span class="line">kld_list=&quot;i915kms&quot;</span><br><span class="line"></span><br><span class="line">#hcsecd_enable=&quot;YES&quot;</span><br><span class="line">#bthidd_enable=&quot;YES&quot;</span><br><span class="line">#sdpd_enable=&quot;YES&quot;</span><br><span class="line"></span><br><span class="line">blued_enable=&quot;YES&quot; </span><br><span class="line"></span><br><span class="line">uhidd_flags=&quot;-kmohsu&quot;</span><br><span class="line">uhidd_enable=&quot;YES&quot;</span><br><span class="line"></span><br><span class="line">sndiod_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>/boot/loader.conf</code>   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">kern.geom.label.disk_ident.enable=&quot;0&quot;</span><br><span class="line">kern.geom.label.gptid.enable=&quot;0&quot;</span><br><span class="line">cryptodev_load=&quot;YES&quot;</span><br><span class="line">zfs_load=&quot;YES&quot;</span><br><span class="line">blank_saver_load=&quot;YES&quot;</span><br><span class="line">sysctlinfo_load=&quot;YES&quot;</span><br><span class="line">snd_driver_load=&quot;YES&quot;</span><br><span class="line"></span><br><span class="line">vkbd_load=&quot;YES&quot;</span><br><span class="line">ng_ubt_load=&quot;YES&quot;</span><br><span class="line">ng_l2cap_load=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>/boot/device.hints</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##for Headphone jack </span><br><span class="line">hint.hdac.0.cad0.nid33.config=&quot;as=1 seq=15 device=Headphones&quot;</span><br><span class="line">hint.hdac.0.cad0.nid18.config=&quot;as=2 seq=0 device=speakers&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/12/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/cuu" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2024 Cuu 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/cuu" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

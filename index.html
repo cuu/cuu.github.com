@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Cuu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Cuu">
+<meta property="og:url" content="https://cuu.github.io/index.html">
+<meta property="og:site_name" content="Cuu">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Cuu">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Cuu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Xiaomi-Tm1703-Freebsd-14-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/12/16/Xiaomi-Tm1703-Freebsd-14-1/">Xiaomi Tm1703 Freebsd 14.1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2024/12/16/Xiaomi-Tm1703-Freebsd-14-1/" class="article-date">
+  <time datetime="2024-12-16T11:53:00.000Z" itemprop="datePublished">2024-12-16</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>/etc/rc.conf</code>   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">hostname=&quot;tm1703&quot;</span><br><span class="line">ifconfig_ue0=&quot;DHCP&quot;</span><br><span class="line">ifconfig_ue0_ipv6=&quot;inet6 accept_rtadv&quot;</span><br><span class="line">local_unbound_enable=&quot;YES&quot;</span><br><span class="line">sshd_enable=&quot;YES&quot;</span><br><span class="line">moused_enable=&quot;YES&quot;</span><br><span class="line">ntpd_enable=&quot;YES&quot;</span><br><span class="line">ntpd_sync_on_start=&quot;YES&quot;</span><br><span class="line">powerd_enable=&quot;YES&quot;</span><br><span class="line"># Set dumpdev to &quot;AUTO&quot; to enable crash dumps, &quot;NO&quot; to disable</span><br><span class="line">dumpdev=&quot;AUTO&quot;</span><br><span class="line">zfs_enable=&quot;YES&quot;</span><br><span class="line">saver=&quot;blank&quot;</span><br><span class="line">blanktime=&quot;300&quot;</span><br><span class="line">dbus_enable=&quot;YES&quot;</span><br><span class="line">hald_enable=&quot;YES&quot;</span><br><span class="line">kld_list=&quot;i915kms&quot;</span><br><span class="line"></span><br><span class="line">#hcsecd_enable=&quot;YES&quot;</span><br><span class="line">#bthidd_enable=&quot;YES&quot;</span><br><span class="line">#sdpd_enable=&quot;YES&quot;</span><br><span class="line"></span><br><span class="line">blued_enable=&quot;YES&quot; </span><br><span class="line"></span><br><span class="line">uhidd_flags=&quot;-kmohsu&quot;</span><br><span class="line">uhidd_enable=&quot;YES&quot;</span><br><span class="line"></span><br><span class="line">sndiod_enable=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>/boot/loader.conf</code>   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">kern.geom.label.disk_ident.enable=&quot;0&quot;</span><br><span class="line">kern.geom.label.gptid.enable=&quot;0&quot;</span><br><span class="line">cryptodev_load=&quot;YES&quot;</span><br><span class="line">zfs_load=&quot;YES&quot;</span><br><span class="line">blank_saver_load=&quot;YES&quot;</span><br><span class="line">sysctlinfo_load=&quot;YES&quot;</span><br><span class="line">snd_driver_load=&quot;YES&quot;</span><br><span class="line"></span><br><span class="line">vkbd_load=&quot;YES&quot;</span><br><span class="line">ng_ubt_load=&quot;YES&quot;</span><br><span class="line">ng_l2cap_load=&quot;YES&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>/boot/device.hints</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##for Headphone jack </span><br><span class="line">hint.hdac.0.cad0.nid33.config=&quot;as=1 seq=15 device=Headphones&quot;</span><br><span class="line">hint.hdac.0.cad0.nid18.config=&quot;as=2 seq=0 device=speakers&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/12/16/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2024/12/16/hello-world/" class="article-date">
+  <time datetime="2024-12-16T11:52:05.573Z" itemprop="datePublished">2024-12-16</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Fire" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/27/Fire/">Fire</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2022/11/27/Fire/" class="article-date">
+  <time datetime="2022-11-27T07:10:14.000Z" itemprop="datePublished">2022-11-27</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/2022/11/27/Fire/fireall.png" class="" title="fire">
+
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-new-golang-basis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/11/new-golang-basis/">new golang basis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2022/11/11/new-golang-basis/" class="article-date">
+  <time datetime="2022-11-11T14:04:50.000Z" itemprop="datePublished">2022-11-11</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>First</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GO111MODULE=on</span><br><span class="line">export GOPROXY=direct</span><br><span class="line">export GOSUMDB=off</span><br></pre></td></tr></table></figure>
+
+<p>otherwise the dumbass golang will try to visit <a target="_blank" rel="noopener" href="https://sum.golang.org/lookup/xxxxxx">https://sum.golang.org/lookup/xxxxxx</a></p>
+<p>Then directly go to work folder where gonna write go code</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">go mod init example.com/thebinaryname</span><br><span class="line">go get github.com/cuu/yyyy@latest</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>the developers must got these ideas from nodejs development….</p>
+<p>then create main.go ,the old days back</p>
+<p>go build or go run main.go</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Ultra-Mobile-Paygo-或T-Mobile-的WIFI-CALLING开不起来了，怎么解决？2022" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/11/Ultra-Mobile-Paygo-%E6%88%96T-Mobile-%E7%9A%84WIFI-CALLING%E5%BC%80%E4%B8%8D%E8%B5%B7%E6%9D%A5%E4%BA%86%EF%BC%8C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F2022/">Ultra Mobile Paygo(或T-Mobile)的WIFI CALLING开不起来了，怎么解决 2022？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2022/11/11/Ultra-Mobile-Paygo-%E6%88%96T-Mobile-%E7%9A%84WIFI-CALLING%E5%BC%80%E4%B8%8D%E8%B5%B7%E6%9D%A5%E4%BA%86%EF%BC%8C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F2022/" class="article-date">
+  <time datetime="2022-11-11T13:22:36.000Z" itemprop="datePublished">2022-11-11</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>手机端手动改DNS。最简单方便。</p>
+<p>在连上WIFI的信号上，添加2条手动DNS</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">199.85.126.10</span><br><span class="line"></span><br><span class="line">199.85.127.10</span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">208.54.49.131 depdg.epc.mnc260.mcc310.pub.3gppnetwork.org</span><br><span class="line">208.54.36.3 ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org</span><br><span class="line">208.54.35.163 epdg.epc.mnc260.mcc310.pub.3gppnetwork.org</span><br><span class="line">208.54.35.163 ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org</span><br><span class="line">208.54.87.3 ss.epdg.epc.geo.mnc260.mcc310.pub.3gppnetwork.org</span><br></pre></td></tr></table></figure>
+
+<p>格式规律是 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">epdg.epc.&lt;服务商 mnc&gt;.&lt;服务商 mcc&gt;.pub.3gppnetwork.org</span><br></pre></td></tr></table></figure>
+<p>mnc mcc 号码来自 </p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Mobile_country_code">https://en.wikipedia.org/wiki/Mobile_country_code</a></p>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">epdg.epc.mnc260.mcc310.pub.3gppnetwork.org for MNC260 MCC310 (T-Mobile USA)</span><br></pre></td></tr></table></figure>
+
+<p>wifi calling </p>
+<p>UDP 500,4500</p>
+<p>TCP 143</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-dasung-253" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/29/dasung-253/">dasung 253</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2022/01/29/dasung-253/" class="article-date">
+  <time datetime="2022-01-29T12:11:09.000Z" itemprop="datePublished">2022-01-29</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>DASUNG 253 paperlike with awesome wm </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/cuu/cuu.github.com.hexo/tree/master/source/_posts/awesomeWM">https://github.com/cuu/cuu.github.com.hexo/tree/master/source/_posts/awesomeWM</a></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+  
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/cuu" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2024 Cuu 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/cuu" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
