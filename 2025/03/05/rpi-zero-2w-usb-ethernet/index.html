@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>rpi zero 2w usb ethernet | Cuu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="AbstractThis writeup explains how to configure your rpi zero 2w (from scratch) to allow ethernet over a USB cable.  This allows you (for example) to plug your rpi zero 2w directly into a linux  PC(ubu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rpi zero 2w usb ethernet">
+<meta property="og:url" content="https://cuu.github.io/2025/03/05/rpi-zero-2w-usb-ethernet/index.html">
+<meta property="og:site_name" content="Cuu">
+<meta property="og:description" content="AbstractThis writeup explains how to configure your rpi zero 2w (from scratch) to allow ethernet over a USB cable.  This allows you (for example) to plug your rpi zero 2w directly into a linux  PC(ubu">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-05T07:22:42.000Z">
+<meta property="article:modified_time" content="2025-03-05T07:46:04.471Z">
+<meta property="article:author" content="Cuu">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="raspberry pi">
+<meta property="article:tag" content="zero 2w">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Cuu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-rpi-zero-2w-usb-ethernet" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      rpi zero 2w usb ethernet
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2025/03/05/rpi-zero-2w-usb-ethernet/" class="article-date">
+  <time datetime="2025-03-05T07:22:42.000Z" itemprop="datePublished">2025-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>This writeup explains how to configure your rpi zero 2w (from scratch) to allow ethernet over a USB cable.  This allows you (for example) to plug your rpi zero 2w directly into a linux  PC(ubuntu 24.01) to both power it as well as connect to it over SSH <strong>WITHOUT</strong> requiring wifi.</p>
+<h1 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h1><p>As of 2025-03-05, here are the steps to get everything working from “scratch”:</p>
+<ol>
+<li><p>Download and run the <code>Raspberry Pi Imager</code> </p>
+</li>
+<li><p>Raspberry Pi Device: Raspberry zero 2w, Operating System: Raspberry Pi OS (64-bit), Storage: Micro SD card</p>
+</li>
+<li><p>OS Customization: Edit Settings</p>
+</li>
+<li><p>Set your hostname, username and password, wireless LAN, and Locale settings</p>
+</li>
+<li><p>Choose <code>Yes</code> to apply your OS customization settings</p>
+</li>
+<li><p>Confirm you want to continue (assuming it is correctly listing your micro SD card) by clicking <code>Yes</code></p>
+</li>
+<li><p>Wait for the write and the verification to finish</p>
+</li>
+<li><p>Plug the micro SD card into your zero and then use a high quality Micro USB to USB cable to connect it to your PC </p>
+</li>
+<li><p>Using an terminal , ssh into your zero 2w using your previously (step 4) wifi and username&#x2F;password settings.</p>
+</li>
+</ol>
+<ul>
+<li><p>You may need to use your wireless router to find your zero 2w’s address.  If you cannot find it, then use an ethernet cable to access it long enough to finish the configuration below.</p>
+</li>
+<li><p>For the uninitiated, you can use the hostname you set up in step 4 above postpended with <code>.local</code>.  So if the hostname you configured was <code>pi</code>, you would type <code>ssh username@pi.local</code> (where username is whatever you provided in step #4 above) to connect…</p>
+</li>
+<li><p>Your initial connection will need you to trust the host key.  So beware that this is a one time aspect of this connection…</p>
+</li>
+</ul>
+<ol start="10">
+<li>Type <code>sudo bash</code> so that you can have elevated privileges for the remaining steps in this guide</li>
+</ol>
+<ul>
+<li>Alternatively you can pre-pend <code>sudo </code> to the front of all the commands in this guide</li>
+</ul>
+<ol start="11">
+<li>Edit (this guide assumes you are familiar with either vi or nano) the file <code>/boot/firmware/cmdline.txt</code> and add the following just AFTER <code>rootwait</code>:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modules-load=dwc2,g_ether</span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li>Edit (again, pick either vi or nano) the file <code>/boot/firmware/config.txt</code> and confirm it has an UNCOMMENTED line near the end that is <code>otg_mode=1</code>.  Then add below the line <code>[all]</code> (it HAS to be after the <code>[all]</code> line for it to work properly) the following:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dtoverlay=dwc2</span><br></pre></td></tr></table></figure>
+
+<ol start="13">
+<li>Now we need to add our connection name by running the following command:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli con add type ethernet con-name ethernet-usb0</span><br></pre></td></tr></table></figure>
+<ol start="14">
+<li>Now edit the file we just created (using vi or nano) named <code>/etc/NetworkManager/system-connections/ethernet-usb0.nmconnection</code></li>
+</ol>
+<ul>
+<li>You will be adding the lines for <code>autoconnect</code> and <code>interface-name</code>, and then modifying the line with <code>method=</code> to change <code>auto</code> to <code>shared</code>:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[connection]</span><br><span class="line">id=ethernet-usb0</span><br><span class="line">uuid=&lt;random group of characters here created by nmcli&gt;</span><br><span class="line">type=ethernet</span><br><span class="line">autoconnect=true</span><br><span class="line">interface-name=usb0</span><br><span class="line">  </span><br><span class="line">[ethernet]</span><br><span class="line">  </span><br><span class="line">[ipv4]</span><br><span class="line">method=shared</span><br><span class="line">  </span><br><span class="line">[ipv6]</span><br><span class="line">addr-gen-mode=default</span><br><span class="line">method=auto</span><br><span class="line">  </span><br><span class="line">[proxy]</span><br></pre></td></tr></table></figure>
+
+<ol start="15">
+<li>Create yet another new file (again with vi or nano) at <code>/usr/local/sbin/usb-gadget.sh</code> with the following contents:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">nmcli con up ethernet-usb0</span><br><span class="line">sleep 1</span><br><span class="line">ifconfig usb0 192.168.7.2 netmask 255.255.255.0</span><br><span class="line">route add default gw 192.168.7.1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="16">
+<li>Make this new file executable with the following command:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+rx /usr/local/sbin/usb-gadget.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="17">
+<li>Create your last new file (using vi or nano) named <code>/lib/systemd/system/usbgadget.service</code> with the following text:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=My USB gadget</span><br><span class="line">After=NetworkManager.service</span><br><span class="line">Wants=NetworkManager.service</span><br><span class="line">  </span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">RemainAfterExit=yes</span><br><span class="line">ExecStart=/usr/local/sbin/usb-gadget.sh</span><br><span class="line">  </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=sysinit.target</span><br></pre></td></tr></table></figure>
+
+<ol start="18">
+<li>Run the following command to enable this new service:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable usbgadget.service</span><br></pre></td></tr></table></figure>
+
+<ol start="19">
+<li>Reboot your zero 2w so all your changes can be put to use.  Run the following command to reboot it:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r now</span><br></pre></td></tr></table></figure>
+
+<ol start="20">
+<li>To test that this is working as expected, you can do the following on Linux PC(ubuntu):</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ifconfig usb0 192.168.7.1</span><br><span class="line">sudo sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
+
+<p>Then ping <code>192.168.7.2</code><br>confirm you can successfully connect.  If you can connect, then this means you can now power AND connect to your zero 2w over a simple Micro-USB to USB cable, no Wi-Fi required!</p>
+<ol start="21">
+<li>In case if you met the renaming problem like me ,<code>enxc2a0f04efdea: renamed from usb0</code>:</li>
+</ol>
+<p>Create a file in <code>/etc/udev/rules.d/</code> eg: 99-pico-zero-2w-persistent-usb0.rules  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTRS&#123;idVendor&#125;==&quot;0525&quot;, ATTRS&#123;idProduct&#125;==&quot;a4a2&quot;, NAME=&quot;usb0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>get 0525:a4a2 from lsusb</p>
+<p>then </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">udevadm control --reload</span><br><span class="line">udevadm trigger</span><br></pre></td></tr></table></figure>
+
+<p>also reboot your pi zero 2w </p>
+<h1 id="Background-Info"><a href="#Background-Info" class="headerlink" title="Background Info"></a>Background Info</h1><p>Because wifi of zero 2w is too slow for me </p>
+<p>Original reference address: <a target="_blank" rel="noopener" href="https://github.com/verxion/RaspberryPi/blob/main/Pi5-ethernet-and-power-over-usbc.md">https://github.com/verxion/RaspberryPi/blob/main/Pi5-ethernet-and-power-over-usbc.md</a></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/02/07/esp32-s3-jetbrain-clion-startup/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ESP32-s3 jetbrain clion startup</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/cuu" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2025 Cuu 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/cuu" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
