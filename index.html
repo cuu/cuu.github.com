@@ -146,7 +146,7 @@
 <li>In case if you met the renaming problem like me ,<code>enxc2a0f04efdea: renamed from usb0</code>:</li>
 </ol>
 <p>Create a file in <code>/etc/udev/rules.d/</code> eg: 99-pico-zero-2w-persistent-usb0.rules  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTRS&#123;idVendor&#125;==&quot;0525&quot;, ATTRS&#123;idProduct&#125;==&quot;a4a2&quot;, NAME=&quot;usb0&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, ATTRS&#123;idVendor&#125;==&quot;0525&quot;, ATTRS&#123;idProduct&#125;==&quot;a4a2&quot;, NAME=&quot;usb0&quot;,RUN+=&quot;/sbin/ifconfig usb0 192.168.7.1&quot;</span><br></pre></td></tr></table></figure>
 
 <p>get 0525:a4a2 from lsusb</p>
 <p>then </p>
