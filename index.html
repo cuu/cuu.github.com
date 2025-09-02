@@ -68,11 +68,9 @@
 <p>add cryptkey&#x3D; into default_kernel_opts</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default_kernel_opts=&quot;cryptroot=UUID=090fe8fa-8323-42a4-a5f6-a2ae8195257e cryptdm=root quiet rootfstype=ext4 cryptkey=/crypto_keyfile.bin consoleblank=60&quot;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
+<p>then </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-extlinux </span><br></pre></td></tr></table></figure>
+<p>to update bootloader menu</p>
 
       
 
